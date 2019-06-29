@@ -27,9 +27,9 @@ const Part3 = props => {
 const Content = props => {
   return (
     <div>
-      <Part1 parts={props.parts} />
-      <Part2 parts={props.parts} />
-      <Part3 parts={props.parts} />
+      <Part1 parts={props.course.parts} />
+      <Part2 parts={props.course.parts} />
+      <Part3 parts={props.course.parts} />
     </div>
   );
 };
