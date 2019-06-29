@@ -3,7 +3,7 @@ import React from "react";
 const Part1 = props => {
   return (
     <p>
-      {props.part1} {props.exercises1}
+      {props.parts[0].name} - {props.parts[0].exercises}
     </p>
   );
 };
@@ -11,7 +11,7 @@ const Part1 = props => {
 const Part2 = props => {
   return (
     <p>
-      {props.part2} {props.exercises2}
+      {props.parts[1].name} - {props.parts[1].exercises}
     </p>
   );
 };
@@ -19,7 +19,7 @@ const Part2 = props => {
 const Part3 = props => {
   return (
     <p>
-      {props.part3} {props.exercises3}
+      {props.parts[2].name} - {props.parts[2].exercises}
     </p>
   );
 };
@@ -27,9 +27,9 @@ const Part3 = props => {
 const Content = props => {
   return (
     <div>
-      <Part1 part1={props.part1.name} exercises1={props.part1.exercises} />
-      <Part2 part1={props.part2.name} exercises1={props.part2.exercises} />
-      <Part3 part1={props.part3.name} exercises1={props.part3.exercises} />
+      <Part1 parts={props.parts} />
+      <Part2 parts={props.parts} />
+      <Part3 parts={props.parts} />
     </div>
   );
 };
