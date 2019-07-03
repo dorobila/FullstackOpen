@@ -14,7 +14,7 @@ const highestVote = (votes, anecdote) => {
 
 const App = props => {
   const dataLenght = props.anecdotes.length;
-  const randomNo = () => Math.floor(Math.random() * 5);
+  const randomNo = () => Math.floor(Math.random() * dataLenght);
 
   const [selected, setSelected] = useState(randomNo);
   const [votes, setVotes] = useState(Array(dataLenght).fill(0));
