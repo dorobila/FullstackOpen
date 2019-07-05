@@ -1,37 +1,18 @@
 import React from "react";
 
-const Part1 = props => {
-  return (
-    <p>
-      {props.parts[0].name} - {props.parts[0].exercises}
-    </p>
-  );
-};
+const Content = ({ course }) => {
+  console.log("course prop", course);
+  console.log("course prop", course.parts[0].id);
 
-const Part2 = props => {
-  return (
-    <p>
-      {props.parts[1].name} - {props.parts[1].exercises}
-    </p>
-  );
-};
+  const content = () =>
+    course.parts.map(part => (
+      <p key={part.id}>
+        {" "}
+        {part.name} - {part.exercises}
+      </p>
+    ));
 
-const Part3 = props => {
-  return (
-    <p>
-      {props.parts[2].name} - {props.parts[2].exercises}
-    </p>
-  );
-};
-
-const Content = props => {
-  return (
-    <div>
-      <Part1 parts={props.course.parts} />
-      <Part2 parts={props.course.parts} />
-      <Part3 parts={props.course.parts} />
-    </div>
-  );
+  return <>{content()}</>;
 };
 
 export default Content;
