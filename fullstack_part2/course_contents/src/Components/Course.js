@@ -15,15 +15,16 @@ const OneCourse = props => {
   // console.log("onecourse", props);
   return (
     <div>
-      <Header course={props} />
+      <Header course={props.course.name} />
       <Content course={props.course.parts} />
       <Total total={props.course.parts} />
     </div>
   );
 };
 
-const Header = ({ course }) => {
-  return <h2> {course.course.name}</h2>;
+const Header = props => {
+  console.log(props);
+  return <h2> {props.course} </h2>;
 };
 
 const Content = ({ course }) => {
