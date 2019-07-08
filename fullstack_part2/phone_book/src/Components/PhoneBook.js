@@ -9,7 +9,7 @@ const PhoneBook = ({ persons, showFilter }) => {
 
   return newPersonArray.map(person => (
     <li key={person.name}>
-      {person.name} {person.number}
+      {person.name} : {person.number}
     </li>
   ));
 };
