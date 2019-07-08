@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
+import Filter from "./Components/Filter";
 import PhoneBook from "./Components/PhoneBook";
+import PersonForm from "./Components/PersonForm";
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -11,9 +13,7 @@ const App = () => {
   ]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
-
-  const rows = () =>
-    persons.map(person => <PhoneBook key={person.name} person={person} />);
+  const [showFilter, setshowFilter] = useState("");
 
   const addNewName = e => {
     e.preventDefault();
@@ -43,19 +43,18 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <form onSubmit={addNewName}>
-        <div>
-          name: <input value={newName} onChange={handleNameChange} />
-        </div>
-        <div>
-          number: <input value={newNumber} onChange={handleNumberChange} />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <Filter showFilter={showFilter} setshowFilter={setshowFilter} />
+      <h2>add a new</h2>
+      <PersonForm
+        addNewName={addNewName}
+        newName={newName}
+        handleNameChange={handleNameChange}
+        handleNumberChange={handleNumberChange}
+      />
       <h2>Numbers</h2>
-      <ul>{rows()}</ul>
+      <ul>
+        <PhoneBook persons={persons} showFilter={showFilter} />
+      </ul>
     </div>
   );
 };
