@@ -1,8 +1,12 @@
 import React from "react";
 
-const PhoneBook = ({ persons }) => {
-  console.log("phonebook", persons);
-  return <li>{persons.name}</li>;
+const PhoneBook = ({ person }) => {
+  console.log("phonebook", person.name);
+  return (
+    <li>
+      {person.name} : {person.number}
+    </li>
+  );
 };
 
 export default PhoneBook;
