@@ -16,7 +16,6 @@ const Weather = ({ capital }) => {
       .then(response => {
         setWeather(response.data.current);
         setIcon(response.data.current.condition.icon);
-        console.log(response);
       });
   }, [capital]);
 
