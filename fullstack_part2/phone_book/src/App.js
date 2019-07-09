@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 import personsService from "./Services/person";
 import Filter from "./Components/Filter";
-import PhoneBook from "./Components/PhoneBook";
+import Notification from "./Components/Notification";
 import PersonForm from "./Components/PersonForm";
+import PhoneBook from "./Components/PhoneBook";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -60,10 +60,10 @@ const App = () => {
       }
     } else {
       if (persons.some(e => e.number === newNumber)) {
-        alert(`# ${newNumber} is already in the phone book.`, false);
+        showMessage(`# ${newNumber} is already in the phone book.`, false);
       } else {
         if (newName === "" || newNumber === "") {
-          alert(`The name and number must not be empty`, false);
+          showMessage(`The name and number must not be empty`, false);
         } else {
           personsService
             .create(personObject)
@@ -134,12 +134,13 @@ const App = () => {
     setTimeout(() => {
       setNotification(null);
       setSuccess(null);
-    }, 8000);
+    }, 3000);
   };
 
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification notification={notification} success={success} />
       <Filter showFilter={showFilter} setshowFilter={setshowFilter} />
       <h2>add a new</h2>
       <PersonForm
