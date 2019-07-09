@@ -19,7 +19,7 @@ const App = () => {
 
   const addNewName = e => {
     e.preventDefault();
-    const noteObject = {
+    const personObject = {
       name: newName,
       number: newNumber
     };
@@ -27,10 +27,12 @@ const App = () => {
     if (persons.some(e => e.name === newName)) {
       alert(`${newName} is already added to phonebook.`);
     }
-
-    setPersons(persons.concat(noteObject));
-    setNewName("");
-    setNewNumber("");
+    axios.post("http://localhost:3001/persons", personObject).then(response => {
+      console.log(response);
+      setPersons(persons.concat(personObject));
+      setNewName("");
+      setNewNumber("");
+    });
   };
 
   const handleNameChange = e => {
@@ -41,10 +43,6 @@ const App = () => {
   const handleNumberChange = e => {
     setNewNumber(e.target.value);
   };
-
-  const setFilterUsingButton = (event) => {
-    setNewFilter(event.target.value)
-  }
 
   return (
     <div>
