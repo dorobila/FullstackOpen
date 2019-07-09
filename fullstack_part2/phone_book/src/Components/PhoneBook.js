@@ -1,6 +1,6 @@
 import React from "react";
 
-const PhoneBook = ({ persons, showFilter }) => {
+const PhoneBook = ({ persons, showFilter, removeEntry }) => {
   let filterUpperCase = showFilter.toUpperCase();
   let newPersonArray = persons.filter(person => {
     let personInUpperCase = person.name.toUpperCase();
@@ -10,6 +10,7 @@ const PhoneBook = ({ persons, showFilter }) => {
   return newPersonArray.map(person => (
     <li key={person.name}>
       {person.name} : {person.number}
+      <button onClick={() => removeEntry(person)}>Delete</button>
     </li>
   ));
 };
